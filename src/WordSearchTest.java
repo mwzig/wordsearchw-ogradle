@@ -69,8 +69,7 @@ public class WordSearchTest {
 				           'h' };
 		
 		WordSearch wordSearch = new WordSearch(rowChars, "bcd");
-		boolean bLeftToRight = true;
-		boolean valueToCheck = wordSearch.findWord(bLeftToRight); 
+		boolean valueToCheck = wordSearch.findWord(); 
 		assertTrue(valueToCheck);
 	}
 
@@ -86,8 +85,7 @@ public class WordSearchTest {
 				           'h' };
 		
 		WordSearch wordSearch = new WordSearch(rowChars, "bcd");
-		boolean bLeftToRight = true;
-		boolean bFound = wordSearch.findWord(bLeftToRight);
+		boolean bFound = wordSearch.findWord();
 		FoundWord foundWord = wordSearch.getFoundWord();
 		String expectedToString = "bcd: (0,1),(0,2),(0,3)";
 		String checkFoundWordToString = foundWord.toString();
@@ -106,8 +104,7 @@ public class WordSearchTest {
 		           'h' };
 		
 		WordSearch wordSearch = new WordSearch(rowChars, "bqd");
-		boolean bLeftToRight = true;
-		boolean valueToCheck = wordSearch.findWord(bLeftToRight); 
+		boolean valueToCheck = wordSearch.findWord(); 
 		assertFalse(valueToCheck);
 	}
 
@@ -124,9 +121,33 @@ public class WordSearchTest {
 				           'h' };
 		
 		WordSearch wordSearch = new WordSearch(rowChars, "hgf");
-		boolean bLeftToRightFalse = false;
-		boolean valueToCheck = wordSearch.findWord(bLeftToRightFalse); 
+		boolean valueToCheck = wordSearch.findWordReverse(); 
 		assertTrue(valueToCheck);
+	}
+
+	// I coded expected coordinates from the end when I was thinking
+	// of having a findWordReverse method, and I changed my mind on the
+	// logic.  I forgot and ran this test and realized the method was
+	// actually returning the right value and my expected value was
+	// incorrect.  It's good to have these negative tests... so, I left
+	// it, but made it pass by changing the assert to check notequals.
+	@Test
+	public void findWordRtoLInOneRowReturnValidLocCoordsNegTest() {
+		char rowChars[] = {'a', ',', 
+				           'b', ',',
+				           'c', ',',
+				           'd', ',',
+				           'e', ',',
+				           'f', ',',
+				           'g', ',',
+				           'h' };
+		
+		WordSearch wordSearch = new WordSearch(rowChars, "hgf");
+		boolean bFound = wordSearch.findWordReverse();
+		FoundWord foundWord = wordSearch.getFoundWord();
+		String expectedToString = "hgf: (0,7),(0,6),(0,5)";
+		String checkFoundWordToString = foundWord.toString();
+		assertEquals(expectedToString, checkFoundWordToString);
 	}
 
 	@Test
@@ -141,8 +162,7 @@ public class WordSearchTest {
 				           'h' };
 		
 		WordSearch wordSearch = new WordSearch(rowChars, "hgf");
-		boolean bLeftToRightFalse = false;
-		boolean bFound = wordSearch.findWord(bLeftToRightFalse);
+		boolean bFound = wordSearch.findWordReverse();
 		FoundWord foundWord = wordSearch.getFoundWord();
 		String expectedToString = "hgf: (0,7),(0,6),(0,5)";
 		String checkFoundWordToString = foundWord.toString();
@@ -161,8 +181,7 @@ public class WordSearchTest {
 		           'h' };
 		
 		WordSearch wordSearch = new WordSearch(rowChars, "hgr");
-		boolean bLeftToRightFalse = false;
-		boolean valueToCheck = wordSearch.findWord(bLeftToRightFalse); 
+		boolean valueToCheck = wordSearch.findWordReverse(); 
 		assertFalse(valueToCheck);
 	}
 	
