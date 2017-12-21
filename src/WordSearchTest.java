@@ -55,4 +55,32 @@ public class WordSearchTest {
 		assertFalse(valueToCheck);
 	}
 
+	// Iteration 3 - now lets get the location of a found word
+	// and also test not finding it
+	@Test
+	public void findWordLtoRInOneRowReturnLocTrue() {
+		char rowChars[] = {'a', ',', 
+				           'b', ',',
+				           'c', ',',
+				           'd', ',',
+				           'e', ',',
+				           'f', ',',
+				           'g', ',',
+				           'h' };
+		
+		WordSearch wordSearch = new WordSearch(rowChars, "bcd");
+		boolean valueToCheck = wordSearch.findWord(); 
+		assertTrue(valueToCheck);
+	}
+
+	@Test
+	public void findWordLtoRInOneRowReturnLocFalse() {
+		char rowChars[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
+		
+		WordSearch wordSearch = new WordSearch(rowChars, "bqd");
+		boolean valueToCheck = wordSearch.findWord(); 
+		assertFalse(valueToCheck);
+	}
+
+
 }
