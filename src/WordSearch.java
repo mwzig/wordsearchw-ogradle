@@ -35,27 +35,38 @@ public class WordSearch {
 		}
 	}
 
-	public boolean findWord() {
-		
+	public boolean findWord(boolean LeftToRight) {
+	
+		String wordToLookFor = "";
+		if (LeftToRight) {
+			wordToLookFor = this.wordToFind;
+		}
+		else {
+			for (int i = wordToFind.length() -1; i >=0; i--) {
+				wordToLookFor += wordToFind.charAt(i);
+			}
+		}
+
 		ArrayList<LocCoordinate> locCoordList = new ArrayList<LocCoordinate>();
 		
-		if (inputRowString.contains(wordToFind)) {
-			int yCoord = inputRowString.indexOf(wordToFind);
+		if (inputRowString.contains(wordToLookFor)) {
+			int yCoord = inputRowString.indexOf(wordToLookFor);
 			LocCoordinate locCoord = new LocCoordinate(0, yCoord);
 			locCoordList.add(locCoord);
 			// need to start at index 1 because we've already
 			// got the first coordinate above
-			for (int i = 1; i < wordToFind.length(); i++) {
+			for (int i = 1; i < wordToLookFor.length(); i++) {
 				locCoord = new LocCoordinate(0, (yCoord + i));
 				locCoordList.add(locCoord);
 			}
-			foundWord = new FoundWord(wordToFind, locCoordList);
+			foundWord = new FoundWord(wordToLookFor, locCoordList);
 			return true;
 		}
 		else {
 			return false;
 		}
 	}
+
 
 	public FoundWord getFoundWord() {
 		return foundWord;

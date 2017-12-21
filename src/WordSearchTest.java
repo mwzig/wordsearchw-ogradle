@@ -69,7 +69,8 @@ public class WordSearchTest {
 				           'h' };
 		
 		WordSearch wordSearch = new WordSearch(rowChars, "bcd");
-		boolean valueToCheck = wordSearch.findWord(); 
+		boolean bLeftToRight = true;
+		boolean valueToCheck = wordSearch.findWord(bLeftToRight); 
 		assertTrue(valueToCheck);
 	}
 
@@ -85,7 +86,8 @@ public class WordSearchTest {
 				           'h' };
 		
 		WordSearch wordSearch = new WordSearch(rowChars, "bcd");
-		boolean bFound = wordSearch.findWord();
+		boolean bLeftToRight = true;
+		boolean bFound = wordSearch.findWord(bLeftToRight);
 		FoundWord foundWord = wordSearch.getFoundWord();
 		String expectedToString = "bcd: (0,1),(0,2),(0,3)";
 		String checkFoundWordToString = foundWord.toString();
@@ -94,12 +96,74 @@ public class WordSearchTest {
 
 	@Test
 	public void findWordLtoRInOneRowReturnLocFalse() {
-		char rowChars[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
+		char rowChars[] = {'a', ',', 
+		           'b', ',',
+		           'c', ',',
+		           'd', ',',
+		           'e', ',',
+		           'f', ',',
+		           'g', ',',
+		           'h' };
 		
 		WordSearch wordSearch = new WordSearch(rowChars, "bqd");
-		boolean valueToCheck = wordSearch.findWord(); 
+		boolean bLeftToRight = true;
+		boolean valueToCheck = wordSearch.findWord(bLeftToRight); 
 		assertFalse(valueToCheck);
 	}
 
+// Iteration 4: find a word from R to L (reverse direction) in one row
+	@Test
+	public void findWordRtoLInOneRowReturnLocTrue() {
+		char rowChars[] = {'a', ',', 
+				           'b', ',',
+				           'c', ',',
+				           'd', ',',
+				           'e', ',',
+				           'f', ',',
+				           'g', ',',
+				           'h' };
+		
+		WordSearch wordSearch = new WordSearch(rowChars, "hgf");
+		boolean bLeftToRightFalse = false;
+		boolean valueToCheck = wordSearch.findWord(bLeftToRightFalse); 
+		assertTrue(valueToCheck);
+	}
 
+	@Test
+	public void findWordRtoLInOneRowReturnValidLocCoords() {
+		char rowChars[] = {'a', ',', 
+				           'b', ',',
+				           'c', ',',
+				           'd', ',',
+				           'e', ',',
+				           'f', ',',
+				           'g', ',',
+				           'h' };
+		
+		WordSearch wordSearch = new WordSearch(rowChars, "hgf");
+		boolean bLeftToRightFalse = false;
+		boolean bFound = wordSearch.findWord(bLeftToRightFalse);
+		FoundWord foundWord = wordSearch.getFoundWord();
+		String expectedToString = "hgf: (0,7),(0,6),(0,5)";
+		String checkFoundWordToString = foundWord.toString();
+		assertEquals(expectedToString, checkFoundWordToString);
+	}
+
+	@Test
+	public void findWordRtoLInOneRowReturnLocFalse() {
+		char rowChars[] = {'a', ',', 
+		           'b', ',',
+		           'c', ',',
+		           'd', ',',
+		           'e', ',',
+		           'f', ',',
+		           'g', ',',
+		           'h' };
+		
+		WordSearch wordSearch = new WordSearch(rowChars, "hgr");
+		boolean bLeftToRightFalse = false;
+		boolean valueToCheck = wordSearch.findWord(bLeftToRightFalse); 
+		assertFalse(valueToCheck);
+	}
+	
 }
