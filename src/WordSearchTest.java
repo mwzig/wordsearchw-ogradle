@@ -12,7 +12,7 @@ public class WordSearchTest {
 		char rowChars[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
 		
 		WordSearch wordSearch = new WordSearch(rowChars, "bcd");
-		boolean valueToCheck = wordSearch.findWord(); 
+		boolean valueToCheck = wordSearch.findWordSimple(); 
 		assertTrue(valueToCheck);
 	}
 
@@ -21,7 +21,7 @@ public class WordSearchTest {
 		char rowChars[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
 		
 		WordSearch wordSearch = new WordSearch(rowChars, "bqd");
-		boolean valueToCheck = wordSearch.findWord(); 
+		boolean valueToCheck = wordSearch.findWordSimple(); 
 		assertFalse(valueToCheck);
 	}
 	*/
@@ -42,7 +42,7 @@ public class WordSearchTest {
 				           'h' };
 		
 		WordSearch wordSearch = new WordSearch(rowChars, "bcd");
-		boolean valueToCheck = wordSearch.findWord(); 
+		boolean valueToCheck = wordSearch.findWordSimple(); 
 		assertTrue(valueToCheck);
 	}
 
@@ -51,7 +51,7 @@ public class WordSearchTest {
 		char rowChars[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
 		
 		WordSearch wordSearch = new WordSearch(rowChars, "bqd");
-		boolean valueToCheck = wordSearch.findWord(); 
+		boolean valueToCheck = wordSearch.findWordSimple(); 
 		assertFalse(valueToCheck);
 	}
 
@@ -71,6 +71,25 @@ public class WordSearchTest {
 		WordSearch wordSearch = new WordSearch(rowChars, "bcd");
 		boolean valueToCheck = wordSearch.findWord(); 
 		assertTrue(valueToCheck);
+	}
+
+	@Test
+	public void findWordLtoRInOneRowReturnValidLocCoords() {
+		char rowChars[] = {'a', ',', 
+				           'b', ',',
+				           'c', ',',
+				           'd', ',',
+				           'e', ',',
+				           'f', ',',
+				           'g', ',',
+				           'h' };
+		
+		WordSearch wordSearch = new WordSearch(rowChars, "bcd");
+		boolean bFound = wordSearch.findWord();
+		FoundWord foundWord = wordSearch.getFoundWord();
+		String expectedToString = "bcd: (0,1),(0,2),(0,3)";
+		String checkFoundWordToString = foundWord.toString();
+		assertEquals(expectedToString, checkFoundWordToString);
 	}
 
 	@Test

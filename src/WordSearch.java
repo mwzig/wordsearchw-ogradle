@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class WordSearch {
 
@@ -9,6 +10,7 @@ public class WordSearch {
 	private char[] inputRow;
 	private String inputRowString;
 	private String wordToFind;
+	private FoundWord foundWord;
 	
 	public WordSearch(char[] inputRow, String wordToFind) {
 	
@@ -24,13 +26,39 @@ public class WordSearch {
 		}
 	}
 	
-	public boolean findWord() {
+	public boolean findWordSimple() {
 		if (inputRowString.contains(wordToFind)) {
 			return true;
 		}
 		else {
 			return false;
 		}
+	}
+
+	public boolean findWord() {
+		
+		ArrayList<LocCoordinate> locCoordList = new ArrayList<LocCoordinate>();
+		
+		if (inputRowString.contains(wordToFind)) {
+			int yCoord = inputRowString.indexOf(wordToFind);
+			LocCoordinate locCoord = new LocCoordinate(0, yCoord);
+			locCoordList.add(locCoord);
+			// need to start at index 1 because we've already
+			// got the first coordinate above
+			for (int i = 1; i < wordToFind.length(); i++) {
+				locCoord = new LocCoordinate(0, (yCoord + i));
+				locCoordList.add(locCoord);
+			}
+			foundWord = new FoundWord(wordToFind, locCoordList);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public FoundWord getFoundWord() {
+		return foundWord;
 	}
 	
 }
