@@ -90,7 +90,7 @@ public class WordSearch {
 			// need to start at index 1 because we've already
 			// got the first coordinate above
 			for (int i = 1; i < wordToFind.length(); i++) {
-				locList.add(coord);
+				locList.add(coord + i);
 			}
 		}
 		return locList;
@@ -110,7 +110,7 @@ public class WordSearch {
 			locList.add(coord);
 			// need to start at index at end of word since we are working in reverse
 			for (int i = 1; i < wordToLookFor.length(); i++) {
-				locList.add(coord);
+				locList.add(coord - i);
 			}
 		}
 		return locList;

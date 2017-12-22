@@ -53,7 +53,7 @@ class WordSearchControllerTest {
 		WordSearchController wsController = new WordSearchController(wordSearch);
 		boolean bFound = wsController.checkVerticalLine(0); 
 		FoundWord foundWord = wsController.getFoundWord();
-		String expectedToString = "bcd: (1,0),(2,0),(3.0)";
+		String expectedToString = "bcd: (1,0),(2,0),(3,0)";
 		String checkFoundWordToString = foundWord.toString();
 		assertEquals(expectedToString, checkFoundWordToString);
 	}
@@ -74,5 +74,7 @@ class WordSearchControllerTest {
 		boolean valueToCheck = wsController.checkVerticalLine(0); 
 		assertFalse(valueToCheck);
 	}
+	
+	
 
 }
