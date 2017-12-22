@@ -18,7 +18,6 @@ class WordSearchControllerTest {
 	// coordinates based on what direction we are searching - horizontal, vertical, or 
 	// diagonal.
 
-	// 
 	// These are copied from Iteration 3 in in the WordSearchTest class.
 	// Get the location of a found word and also test not finding it.
 	@Test
@@ -32,9 +31,10 @@ class WordSearchControllerTest {
 				           'g', ',',
 				           'h' };
 		
+		boolean bForwardSearch = true;
 		WordSearch wordSearch = new WordSearch(lineChars, "bcd");
 		WordSearchController wsController = new WordSearchController(wordSearch);
-		boolean valueToCheck = wsController.checkVerticalLine(0); 
+		boolean valueToCheck = wsController.checkVerticalLine(0, bForwardSearch); 
 		assertTrue(valueToCheck);
 	}
 
@@ -49,12 +49,13 @@ class WordSearchControllerTest {
 				           'g', ',',
 				           'h' };
 		
-		WordSearch wordSearch = new WordSearch(lineChars, "bcd");
+		boolean bForwardSearch = true;
+			WordSearch wordSearch = new WordSearch(lineChars, "bcd");
 		WordSearchController wsController = new WordSearchController(wordSearch);
-		boolean bFound = wsController.checkVerticalLine(0); 
+		boolean bFound = wsController.checkVerticalLine(0, bForwardSearch); 
 		FoundWord foundWord = wsController.getFoundWord();
-		String expectedToString = "bcd: (1,0),(2,0),(3,0)";
 		String checkFoundWordToString = foundWord.toString();
+		String expectedToString = "bcd: (1,0),(2,0),(3,0)";
 		assertEquals(expectedToString, checkFoundWordToString);
 	}
 
@@ -68,13 +69,72 @@ class WordSearchControllerTest {
 		           'f', ',',
 		           'g', ',',
 		           'h' };
-		
+		boolean bForwardSearch = true;
 		WordSearch wordSearch = new WordSearch(lineChars, "bqd");
 		WordSearchController wsController = new WordSearchController(wordSearch);
-		boolean valueToCheck = wsController.checkVerticalLine(0); 
+		boolean valueToCheck = wsController.checkVerticalLine(0, bForwardSearch); 
+		assertFalse(valueToCheck);
+	}
+	
+	// Iteration 6:  Test searching backwards vertically.
+	// These are copied from Iteration 4 in in the WordSearchTest class.
+	// Get the location of a found word and also test not finding it.
+
+	public void findWordRtoLInOneColumnReturnLocTrue() {
+		char lineChars[] = {'a', ',', 
+				           'b', ',',
+				           'c', ',',
+				           'd', ',',
+				           'e', ',',
+				           'f', ',',
+				           'g', ',',
+				           'h' };
+		
+		boolean bForwardSearchFalse = false;
+		WordSearch wordSearch = new WordSearch(lineChars, "hgf");
+		WordSearchController wsController = new WordSearchController(wordSearch);
+		boolean valueToCheck = wsController.checkVerticalLine(0, bForwardSearchFalse); 
+		assertTrue(valueToCheck);
+	}
+
+		@Test
+	public void findWordRtoLInOneColumnReturnValidLocCoords() {
+		char lineChars[] = {'a', ',', 
+				           'b', ',',
+				           'c', ',',
+				           'd', ',',
+				           'e', ',',
+				           'f', ',',
+				           'g', ',',
+				           'h' };
+		
+		boolean bForwardSearchFalse = false;
+		WordSearch wordSearch = new WordSearch(lineChars, "hgf");
+		WordSearchController wsController = new WordSearchController(wordSearch);
+		boolean bFound = wsController.checkVerticalLine(0, bForwardSearchFalse); 
+		FoundWord foundWord = wsController.getFoundWord();
+		String checkFoundWordToString = foundWord.toString();
+		String expectedToString = "hgf: (7,0),(6,0),(5,0)";
+		assertEquals(expectedToString, checkFoundWordToString);
+	}
+
+	@Test
+	public void findWordRtoLInOneColumnReturnLocFalse() {
+		char lineChars[] = {'a', ',', 
+		           'b', ',',
+		           'c', ',',
+		           'd', ',',
+		           'e', ',',
+		           'f', ',',
+		           'g', ',',
+		           'h' };
+		
+		boolean bForwardSearchFalse = false;
+		WordSearch wordSearch = new WordSearch(lineChars, "hgr");
+		WordSearchController wsController = new WordSearchController(wordSearch);
+		boolean valueToCheck = wsController.checkVerticalLine(0, bForwardSearchFalse); 
 		assertFalse(valueToCheck);
 	}
 	
 	
-
 }

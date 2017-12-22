@@ -125,31 +125,6 @@ public class WordSearchTest {
 		assertTrue(valueToCheck);
 	}
 
-	// I coded expected coordinates from the end when I was thinking
-	// of having a findWordReverse method, and I changed my mind on the
-	// logic.  I forgot and ran this test and realized the method was
-	// actually returning the right value and my expected value was
-	// incorrect.  It's good to have these negative tests... so, I left
-	// it, but made it pass by changing the assert to check notequals.
-	@Test
-	public void findWordRtoLInOneRowReturnValidLocCoordsNegTest() {
-		char rowChars[] = {'a', ',', 
-				           'b', ',',
-				           'c', ',',
-				           'd', ',',
-				           'e', ',',
-				           'f', ',',
-				           'g', ',',
-				           'h' };
-		
-		WordSearch wordSearch = new WordSearch(rowChars, "hgf");
-		boolean bFound = wordSearch.findWordReverse();
-		FoundWord foundWord = wordSearch.getFoundWord();
-		String expectedToString = "hgf: (0,7),(0,6),(0,5)";
-		String checkFoundWordToString = foundWord.toString();
-		assertEquals(expectedToString, checkFoundWordToString);
-	}
-
 	@Test
 	public void findWordRtoLInOneRowReturnValidLocCoords() {
 		char rowChars[] = {'a', ',', 
