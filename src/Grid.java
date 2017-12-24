@@ -69,8 +69,9 @@ public class Grid {
 		
 		//formatGridLinesFromRows();
 		//formatGridLinesFromColumns();
-		//formatGridLinesFromDiagonalsTopLeftToBottomRight();
-		formatGridLinesFromDiagonalsBottomLeftToTopRight();
+		formatGridLinesFromDiagonalsTopLeftToBottomRightPart1();
+		formatGridLinesFromDiagonalsTopLeftToBottomRightPart2();
+		//formatGridLinesFromDiagonalsBottomLeftToTopRight();
 	}
 
 	private void formatGridLinesFromColumns() {
@@ -94,7 +95,7 @@ public class Grid {
 		}
 	}
 
-	private void formatGridLinesFromDiagonalsTopLeftToBottomRight() {
+	private void formatGridLinesFromDiagonalsTopLeftToBottomRightPart1() {
 	
 		GridLine gridLine;
 		ArrayList<LocCoordinate> gridLineCoordinateList;
@@ -132,6 +133,57 @@ public class Grid {
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
 		}
+		
+		// We reached the longest diagonal line, so now we need to switch axes and process
+		// the rest of the diagonals starting from the x-axis
+		
+		
+	}
+
+	// We reached the longest diagonal line, so now we need to switch axes and process
+	// the rest of the diagonals starting from the x-axis
+	private void formatGridLinesFromDiagonalsTopLeftToBottomRightPart2() {
+		
+		GridLine gridLine;
+		ArrayList<LocCoordinate> gridLineCoordinateList;
+		String lineString;
+		int row = gridLetters.length -1;
+		int nextColumn = 0;
+		int nextRowUp = 0;
+	
+		// Start at last row, column 1
+		// Then move right one, up one until we are out of the grid
+		// Then move down to the next row, always starting at column 0
+		for (int column = 1; column < gridLetters.length -1; column++) {
+			//re-init vars as we move across each column because we 
+			//are creating a new GridLine
+			lineString = "";
+			nextColumn = column;
+			nextRowUp = row;
+			gridLineCoordinateList = new ArrayList<LocCoordinate>();
+			
+			// we are always starting at the last row
+			row  = gridLetters.length -1; 
+			lineString += gridLetters[row][column].getLetter();
+			gridLineCoordinateList.add(gridLetters[row][column].getLocCoordinate());
+			
+			nextColumn++;
+			nextRowUp--;
+			System.out.println("The next column is " + nextColumn);
+			System.out.println("the next row is " + nextRowUp);
+			
+			do {
+				lineString += gridLetters[nextRowUp][nextColumn].getLetter();
+				gridLineCoordinateList.add(gridLetters[nextRowUp][nextColumn].getLocCoordinate());
+				nextColumn++;
+				nextRowUp--;
+					
+			} while (nextColumn < gridLetters.length  && nextRowUp >= 0); 
+			gridLine = new GridLine(lineString, gridLineCoordinateList);
+			gridLines.add(gridLine);
+		}
+		
+		
 	}
 
 	private void formatGridLinesFromDiagonalsBottomLeftToTopRight() {
