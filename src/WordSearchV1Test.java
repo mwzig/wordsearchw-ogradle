@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class WordSearchTest {
+public class WordSearchV1Test {
 
 	// Iteration 1 - started with a WordSearch constructor that 
 	// just took in chars like this 
@@ -41,7 +41,7 @@ public class WordSearchTest {
 				           'g', ',',
 				           'h' };
 		
-		WordSearch wordSearch = new WordSearch(rowChars, "bcd");
+		WordSearchV1 wordSearch = new WordSearchV1(rowChars, "bcd");
 		boolean valueToCheck = wordSearch.findWordSimple(); 
 		assertTrue(valueToCheck);
 	}
@@ -50,7 +50,7 @@ public class WordSearchTest {
 	public void findWordLtoRInOneRowFalse() {
 		char rowChars[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
 		
-		WordSearch wordSearch = new WordSearch(rowChars, "bqd");
+		WordSearchV1 wordSearch = new WordSearchV1(rowChars, "bqd");
 		boolean valueToCheck = wordSearch.findWordSimple(); 
 		assertFalse(valueToCheck);
 	}
@@ -68,7 +68,7 @@ public class WordSearchTest {
 				           'g', ',',
 				           'h' };
 		
-		WordSearch wordSearch = new WordSearch(rowChars, "bcd");
+		WordSearchV1 wordSearch = new WordSearchV1(rowChars, "bcd");
 		boolean valueToCheck = wordSearch.findWord(); 
 		assertTrue(valueToCheck);
 	}
@@ -84,7 +84,7 @@ public class WordSearchTest {
 				           'g', ',',
 				           'h' };
 		
-		WordSearch wordSearch = new WordSearch(rowChars, "bcd");
+		WordSearchV1 wordSearch = new WordSearchV1(rowChars, "bcd");
 		boolean bFound = wordSearch.findWord();
 		FoundWord foundWord = wordSearch.getFoundWord();
 		String expectedToString = "bcd: (0,1),(0,2),(0,3)";
@@ -103,7 +103,7 @@ public class WordSearchTest {
 		           'g', ',',
 		           'h' };
 		
-		WordSearch wordSearch = new WordSearch(rowChars, "bqd");
+		WordSearchV1 wordSearch = new WordSearchV1(rowChars, "bqd");
 		boolean valueToCheck = wordSearch.findWord(); 
 		assertFalse(valueToCheck);
 	}
@@ -120,7 +120,7 @@ public class WordSearchTest {
 				           'g', ',',
 				           'h' };
 		
-		WordSearch wordSearch = new WordSearch(rowChars, "hgf");
+		WordSearchV1 wordSearch = new WordSearchV1(rowChars, "hgf");
 		boolean valueToCheck = wordSearch.findWordReverse(); 
 		assertTrue(valueToCheck);
 	}
@@ -136,7 +136,7 @@ public class WordSearchTest {
 				           'g', ',',
 				           'h' };
 		
-		WordSearch wordSearch = new WordSearch(rowChars, "hgf");
+		WordSearchV1 wordSearch = new WordSearchV1(rowChars, "hgf");
 		boolean bFound = wordSearch.findWordReverse();
 		FoundWord foundWord = wordSearch.getFoundWord();
 		String expectedToString = "hgf: (0,7),(0,6),(0,5)";
@@ -155,7 +155,7 @@ public class WordSearchTest {
 		           'g', ',',
 		           'h' };
 		
-		WordSearch wordSearch = new WordSearch(rowChars, "hgr");
+		WordSearchV1 wordSearch = new WordSearchV1(rowChars, "hgr");
 		boolean valueToCheck = wordSearch.findWordReverse(); 
 		assertFalse(valueToCheck);
 	}

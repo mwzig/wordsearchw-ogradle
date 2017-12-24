@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class WordSearchController {
-	private WordSearch wordSearch;
+	private WordSearchV1 wordSearch;
 	private FoundWord foundWord;
 
-	public WordSearchController(WordSearch wordSearch) {
+	public WordSearchController(WordSearchV1 wordSearch) {
 		this.wordSearch = wordSearch;
 	}
 

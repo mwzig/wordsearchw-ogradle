@@ -83,6 +83,20 @@ public class Grid {
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
 		}
+		// Second, format rows R to L into GridLine objects and add them to the
+		// Gridline ArrayList
+		
+		for (int row = 0; row < gridLetters.length; row++) {
+			lineString = "";
+			gridLineCoordinateList = new ArrayList<LocCoordinate>();
+			for (int column = gridLetters.length-1; column >=0; column--) {
+				lineString += gridLetters[row][column].getLetter();
+				gridLineCoordinateList.add(gridLetters[row][column].getLocCoordinate());
+
+			}
+			gridLine = new GridLine(lineString, gridLineCoordinateList);
+			gridLines.add(gridLine);
+		}
 	}
 
 	@Override
@@ -96,6 +110,22 @@ public class Grid {
 		}
 		return "Grid [gridLetters=" + Arrays.toString(gridLetters) + ", wordsToFind=" + wordsToFind + ", gridLines="
 				+ gridLines + ", foundWords=" + foundWords + "]";
+	}
+
+	public GridLetter[][] getGridLetters() {
+		return gridLetters;
+	}
+
+	public ArrayList<String> getWordsToFind() {
+		return wordsToFind;
+	}
+
+	public ArrayList<GridLine> getGridLines() {
+		return gridLines;
+	}
+
+	public ArrayList<FoundWord> getFoundWords() {
+		return foundWords;
 	}
 
 }

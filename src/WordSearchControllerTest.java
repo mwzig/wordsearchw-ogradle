@@ -32,7 +32,7 @@ class WordSearchControllerTest {
 				           'h' };
 		
 		boolean bForwardSearch = true;
-		WordSearch wordSearch = new WordSearch(lineChars, "bcd");
+		WordSearchV1 wordSearch = new WordSearchV1(lineChars, "bcd");
 		WordSearchController wsController = new WordSearchController(wordSearch);
 		boolean valueToCheck = wsController.checkVerticalLine(0, bForwardSearch); 
 		assertTrue(valueToCheck);
@@ -50,7 +50,7 @@ class WordSearchControllerTest {
 				           'h' };
 		
 		boolean bForwardSearch = true;
-			WordSearch wordSearch = new WordSearch(lineChars, "bcd");
+			WordSearchV1 wordSearch = new WordSearchV1(lineChars, "bcd");
 		WordSearchController wsController = new WordSearchController(wordSearch);
 		boolean bFound = wsController.checkVerticalLine(0, bForwardSearch); 
 		FoundWord foundWord = wsController.getFoundWord();
@@ -70,7 +70,7 @@ class WordSearchControllerTest {
 		           'g', ',',
 		           'h' };
 		boolean bForwardSearch = true;
-		WordSearch wordSearch = new WordSearch(lineChars, "bqd");
+		WordSearchV1 wordSearch = new WordSearchV1(lineChars, "bqd");
 		WordSearchController wsController = new WordSearchController(wordSearch);
 		boolean valueToCheck = wsController.checkVerticalLine(0, bForwardSearch); 
 		assertFalse(valueToCheck);
@@ -91,7 +91,7 @@ class WordSearchControllerTest {
 				           'h' };
 		
 		boolean bForwardSearchFalse = false;
-		WordSearch wordSearch = new WordSearch(lineChars, "hgf");
+		WordSearchV1 wordSearch = new WordSearchV1(lineChars, "hgf");
 		WordSearchController wsController = new WordSearchController(wordSearch);
 		boolean valueToCheck = wsController.checkVerticalLine(0, bForwardSearchFalse); 
 		assertTrue(valueToCheck);
@@ -109,7 +109,7 @@ class WordSearchControllerTest {
 				           'h' };
 		
 		boolean bForwardSearchFalse = false;
-		WordSearch wordSearch = new WordSearch(lineChars, "hgf");
+		WordSearchV1 wordSearch = new WordSearchV1(lineChars, "hgf");
 		WordSearchController wsController = new WordSearchController(wordSearch);
 		boolean bFound = wsController.checkVerticalLine(0, bForwardSearchFalse); 
 		FoundWord foundWord = wsController.getFoundWord();
@@ -130,7 +130,7 @@ class WordSearchControllerTest {
 		           'h' };
 		
 		boolean bForwardSearchFalse = false;
-		WordSearch wordSearch = new WordSearch(lineChars, "hgr");
+		WordSearchV1 wordSearch = new WordSearchV1(lineChars, "hgr");
 		WordSearchController wsController = new WordSearchController(wordSearch);
 		boolean valueToCheck = wsController.checkVerticalLine(0, bForwardSearchFalse); 
 		assertFalse(valueToCheck);
