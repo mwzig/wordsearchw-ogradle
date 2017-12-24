@@ -15,6 +15,18 @@ public class GridLine {
 	public ArrayList<LocCoordinate> getGridLocCoordinateList() {
 		return locCoordinateList;
 	}
+	
+	public GridLine getReverseLine() {
+
+		ArrayList<LocCoordinate> revLocCoordinateList = new ArrayList<LocCoordinate>();
+		String reverseLineString = new StringBuilder(lineString).reverse().toString();
+		for (int i = reverseLineString.length(); i >=0  ;i--) {
+			revLocCoordinateList.add(locCoordinateList.get(i));
+		}
+		GridLine reverseGridLine = new GridLine(reverseLineString, revLocCoordinateList);
+		return reverseGridLine;
+	}
+	
 	@Override
 	public String toString() {
 		return "GridLine [gridCharString=" + lineString + ", locCoordinateList=" + locCoordinateList + "]";

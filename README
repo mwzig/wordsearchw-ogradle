@@ -13,6 +13,13 @@ class design to handle this problem.
 Third Day 12/22:  spent some time with pencil and paper drawing out class desgins.
 
 
-Fourth Day 12/23: back on the plane with some focused coding time.
+Fourth Day 12/23: back on the plane with a little time to code out new logic. Crying baby on plane and no dinner.
 
-12/24 - Creating tests for Grid object.
+
+Fifth Dady 12/24 - Creating tests for Grid object.  Things are coming together. Next on the list
+ is testing the reverse GridLine logic.  Then the loop to actually search the whole
+ grid for words to find.  Then reading in the grid and words to find from a file.  Then
+ desk check, reformat, more testing, and more doc.
+ 
+  
+
