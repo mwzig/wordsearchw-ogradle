@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class GridTest {
 
 	@Test
-	void testGetGridLines() {
+	void testGetGridLinesFromFormatDiagonalsPart1() {
 
 		LocCoordinate locCoordinate;
 		GridLetter gridLetter;
@@ -48,14 +48,30 @@ class GridTest {
 
 		}
 
-		Grid testGrid = new Grid(inputGrid);
+		String testType = "DiagonalTopLeftToBottomRight";
+		Grid testGrid = new Grid(inputGrid, testType);
 		ArrayList<GridLine> gridLines = testGrid.getGridLines();
+		String checkConcatGridLineStrings = "";
 		for (GridLine gridLine: gridLines) {
+			checkConcatGridLineStrings += gridLine.getLineString();
 			System.out.println(gridLine.toString());
 		}
 
-		int checkSize = gridLines.size(); 
-		assertNotEquals(checkSize, 0);
+		String expectedConcatGridLineStrings = "ab" +
+		"abc" +
+		"abcd" +
+		"abcde" +
+		"abcdef" +
+		"abcdefg" +
+		"abcdefgh" +
+		"bcdefgh" +
+		"cdefgh" +
+		"defgh" +
+		"efgh" +
+		"fgh" +
+		"gh";
+					
+		assertEquals(expectedConcatGridLineStrings, checkConcatGridLineStrings);
 	
 	
 	}

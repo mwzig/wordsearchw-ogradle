@@ -6,7 +6,7 @@ public class Grid {
 
 	private GridLetter[][] gridLetters;
 	private ArrayList<GridLine> gridLines;
-	
+
 	public Grid(String inputFile) {
 		// todo - read input file, for each letter, create a GridLetter
 		// create the grid which is a 2-dim array of GridLetters
@@ -61,169 +61,45 @@ public class Grid {
 
 	public Grid(GridLetter[][] gridLetters) {
 		this.gridLetters = gridLetters;
+		gridLines = new ArrayList<GridLine>();
 		formatGridLines();
 	}
-	
-	private void formatGridLines() {
+
+	public Grid(GridLetter[][] gridLetters, String testType) {
+		this.gridLetters = gridLetters;
 		gridLines = new ArrayList<GridLine>();
+		switch (testType) {
+		case "DiagonalTopLeftToBottomRight":
+			formatGridLinesFromDiagonalsTopLeftToBottomRightPart1();
+			formatGridLinesFromDiagonalsTopLeftToBottomRightPart2();
+			break;
+		case "DiagonalBottomLeftToTopRight":
+			formatGridLinesFromDiagonalsBottomLeftToTopRightPart1();
+			formatGridLinesFromDiagonalsBottomLeftToTopRightPart2();
+			break;
+		case "Rows":
+			formatGridLinesFromRows();
+			break;
+
+		case "Columns":
+			formatGridLinesFromColumns();
+			break;
+		}
+	}
+
+	private void formatGridLines() {
 		
-		//formatGridLinesFromRows();
-		//formatGridLinesFromColumns();
+		
+
+		formatGridLinesFromRows();
+		formatGridLinesFromColumns();
 		formatGridLinesFromDiagonalsTopLeftToBottomRightPart1();
 		formatGridLinesFromDiagonalsTopLeftToBottomRightPart2();
-		//formatGridLinesFromDiagonalsBottomLeftToTopRight();
-	}
-
-	private void formatGridLinesFromColumns() {
-
-		
-		// first, format rows L to R into GridLine objects and add them to the
-		// GridLine ArrayList
-		GridLine gridLine;
-		ArrayList<LocCoordinate> gridLineCoordinateList;
-		String lineString;
-		for (int column = 0; column < gridLetters.length; column++) {
-			lineString = "";
-			gridLineCoordinateList = new ArrayList<LocCoordinate>();
-			for (int row = 0; row < gridLetters.length; row++) {
-				lineString += gridLetters[row][column].getLetter();
-				gridLineCoordinateList.add(gridLetters[row][column].getLocCoordinate());
-
-			}
-			gridLine = new GridLine(lineString, gridLineCoordinateList);
-			gridLines.add(gridLine);
-		}
-	}
-
-	private void formatGridLinesFromDiagonalsTopLeftToBottomRightPart1() {
-	
-		GridLine gridLine;
-		ArrayList<LocCoordinate> gridLineCoordinateList;
-		String lineString;
-		int column = 0;
-		int nextColumn = 0;
-		int nextRowUp = 0;
-	
-		// Start at row 1, column 0
-		// That will be the first letter in the GridLine
-		// Then move right one, up one until we are out of the grid
-		// Then move down to the next row, always starting at column 0
-		for (int row = 1; row < gridLetters.length; row++) {
-			//re-init vars as we move down each row because we 
-			//are creating a new GridLine
-			column = 0;
-			nextColumn = 0;
-			nextRowUp = row;
-			lineString = "";
-			gridLineCoordinateList = new ArrayList<LocCoordinate>();
-			//In a diagonal GridLine, we iterate through rows, 
-			//but we always start at column 0 as our first point
-			lineString += gridLetters[row][column].getLetter();
-			gridLineCoordinateList.add(gridLetters[row][column].getLocCoordinate());
-			nextColumn++;
-			nextRowUp--;
-			
-			do {
-				lineString += gridLetters[nextRowUp][nextColumn].getLetter();
-				gridLineCoordinateList.add(gridLetters[nextRowUp][nextColumn].getLocCoordinate());
-				nextColumn++;
-				nextRowUp--;
-					
-			} while (nextColumn < gridLetters.length  && nextRowUp >= 0); 
-			gridLine = new GridLine(lineString, gridLineCoordinateList);
-			gridLines.add(gridLine);
-		}
-		
-		// We reached the longest diagonal line, so now we need to switch axes and process
-		// the rest of the diagonals starting from the x-axis
-		
+		formatGridLinesFromDiagonalsBottomLeftToTopRightPart1();
+		formatGridLinesFromDiagonalsBottomLeftToTopRightPart2();
 		
 	}
 
-	// We reached the longest diagonal line, so now we need to switch axes and process
-	// the rest of the diagonals starting from the x-axis
-	private void formatGridLinesFromDiagonalsTopLeftToBottomRightPart2() {
-		
-		GridLine gridLine;
-		ArrayList<LocCoordinate> gridLineCoordinateList;
-		String lineString;
-		int row = gridLetters.length -1;
-		int nextColumn = 0;
-		int nextRowUp = 0;
-	
-		// Start at last row, column 1
-		// Then move right one, up one until we are out of the grid
-		// Then move down to the next row, always starting at column 0
-		for (int column = 1; column < gridLetters.length -1; column++) {
-			//re-init vars as we move across each column because we 
-			//are creating a new GridLine
-			lineString = "";
-			nextColumn = column;
-			nextRowUp = row;
-			gridLineCoordinateList = new ArrayList<LocCoordinate>();
-			
-			// we are always starting at the last row
-			row  = gridLetters.length -1; 
-			lineString += gridLetters[row][column].getLetter();
-			gridLineCoordinateList.add(gridLetters[row][column].getLocCoordinate());
-			
-			nextColumn++;
-			nextRowUp--;
-			System.out.println("The next column is " + nextColumn);
-			System.out.println("the next row is " + nextRowUp);
-			
-			do {
-				lineString += gridLetters[nextRowUp][nextColumn].getLetter();
-				gridLineCoordinateList.add(gridLetters[nextRowUp][nextColumn].getLocCoordinate());
-				nextColumn++;
-				nextRowUp--;
-					
-			} while (nextColumn < gridLetters.length  && nextRowUp >= 0); 
-			gridLine = new GridLine(lineString, gridLineCoordinateList);
-			gridLines.add(gridLine);
-		}
-		
-		
-	}
-
-	private void formatGridLinesFromDiagonalsBottomLeftToTopRight() {
-		
-		GridLine gridLine;
-		ArrayList<LocCoordinate> gridLineCoordinateList;
-		String lineString;
-		int column = 0;
-		int nextColumn = 0;
-		int nextRowDown = 0;
-	
-		// Start at the next to the last row (which is grid size -2 because the index starts at 0)
-		// Start at column 0
-		// Then move right one, down one until we are out of the grid
-		// Then move up to the previous row, always starting at column 0
-		for (int row = gridLetters.length-2; row >= 0; row--) {
-			//re-init vars as we move down each row because we 
-			//are creating a new GridLine
-			column = 0;
-			nextColumn = 0;
-			nextRowDown = row;
-			lineString = "";
-			gridLineCoordinateList = new ArrayList<LocCoordinate>();
-			//In a diagonal GridLine, we iterate through rows, 
-			//but we always start at column 0 as our first point
-			lineString += gridLetters[row][column].getLetter();
-			gridLineCoordinateList.add(gridLetters[row][column].getLocCoordinate());
-			nextColumn++;
-			nextRowDown++;
-			
-			do {
-				lineString += gridLetters[nextRowDown][nextColumn].getLetter();
-				gridLineCoordinateList.add(gridLetters[nextRowDown][nextColumn].getLocCoordinate());
-				nextColumn++;
-				nextRowDown++;
-			} while (nextColumn < gridLetters.length  && nextRowDown < gridLetters.length); 
-			gridLine = new GridLine(lineString, gridLineCoordinateList);
-			gridLines.add(gridLine);
-		}
-	}
 	private void formatGridLinesFromRows() {
 		// first, format rows L to R into GridLine objects and add them to the
 		// GridLine ArrayList
@@ -257,12 +133,195 @@ public class Grid {
 		}
 	}
 
-	public GridLetter[][] getGridLetters() {
-		return gridLetters;
+	private void formatGridLinesFromColumns() {
+		// first, format columns top to bottom into GridLine objects and add them to the
+		// GridLine ArrayList
+		GridLine gridLine;
+		ArrayList<LocCoordinate> gridLineCoordinateList;
+		String lineString;
+		for (int column = 0; column < gridLetters.length; column++) {
+			lineString = "";
+			gridLineCoordinateList = new ArrayList<LocCoordinate>();
+			for (int row = 0; row < gridLetters.length; row++) {
+				lineString += gridLetters[row][column].getLetter();
+				gridLineCoordinateList.add(gridLetters[row][column].getLocCoordinate());
+
+			}
+			gridLine = new GridLine(lineString, gridLineCoordinateList);
+			gridLines.add(gridLine);
+		}
 	}
 
+	private void formatGridLinesFromDiagonalsTopLeftToBottomRightPart1() {
+
+		GridLine gridLine;
+		ArrayList<LocCoordinate> gridLineCoordinateList;
+		String lineString;
+		int column = 0;
+		int nextColumn = 0;
+		int nextRowUp = 0;
+
+		// Start at row 1, column 0
+		// That will be the first letter in the GridLine
+		// Then move right one, up one until we are out of the grid
+		// Then move down to the next row, always starting at column 0
+		for (int row = 1; row < gridLetters.length; row++) {
+			// re-init vars as we move down each row because we
+			// are creating a new GridLine
+			column = 0;
+			nextColumn = 0;
+			nextRowUp = row;
+			lineString = "";
+			gridLineCoordinateList = new ArrayList<LocCoordinate>();
+			// In a diagonal GridLine, we iterate through rows,
+			// but we always start at column 0 as our first point
+			lineString += gridLetters[row][column].getLetter();
+			gridLineCoordinateList.add(gridLetters[row][column].getLocCoordinate());
+			nextColumn++;
+			nextRowUp--;
+
+			do {
+				lineString += gridLetters[nextRowUp][nextColumn].getLetter();
+				gridLineCoordinateList.add(gridLetters[nextRowUp][nextColumn].getLocCoordinate());
+				nextColumn++;
+				nextRowUp--;
+
+			} while (nextColumn < gridLetters.length && nextRowUp >= 0);
+			gridLine = new GridLine(lineString, gridLineCoordinateList);
+			gridLines.add(gridLine);
+		}
+	}
+
+	// We reached the longest diagonal line, so now we need to switch axes and
+	// process
+	// the rest of the diagonals starting from the x-axis
+	private void formatGridLinesFromDiagonalsTopLeftToBottomRightPart2() {
+
+		GridLine gridLine;
+		ArrayList<LocCoordinate> gridLineCoordinateList;
+		String lineString;
+		int row = gridLetters.length - 1;
+		int nextColumn = 0;
+		int nextRowUp = 0;
+
+		// Start at last row, column 1
+		// Then move right one, up one until we are out of the grid
+		// Then move down to the next row, always starting at column 0
+		for (int column = 1; column < gridLetters.length - 1; column++) {
+			// re-init vars as we move across each column because we
+			// are creating a new GridLine
+			lineString = "";
+			nextColumn = column;
+			nextRowUp = row;
+			gridLineCoordinateList = new ArrayList<LocCoordinate>();
+
+			// we are always starting at the last row
+			row = gridLetters.length - 1;
+			lineString += gridLetters[row][column].getLetter();
+			gridLineCoordinateList.add(gridLetters[row][column].getLocCoordinate());
+
+			nextColumn++;
+			nextRowUp--;
+
+			do {
+				lineString += gridLetters[nextRowUp][nextColumn].getLetter();
+				gridLineCoordinateList.add(gridLetters[nextRowUp][nextColumn].getLocCoordinate());
+				nextColumn++;
+				nextRowUp--;
+
+			} while (nextColumn < gridLetters.length && nextRowUp >= 0);
+			gridLine = new GridLine(lineString, gridLineCoordinateList);
+			gridLines.add(gridLine);
+		}
+
+	}
+
+	private void formatGridLinesFromDiagonalsBottomLeftToTopRightPart1() {
+
+		GridLine gridLine;
+		ArrayList<LocCoordinate> gridLineCoordinateList;
+		String lineString;
+		int column = 0;
+		int nextColumn = 0;
+		int nextRowDown = 0;
+
+		// Start at the next to the last row (which is grid size -2 because the index
+		// starts at 0)
+		// Start at column 0
+		// Then move right one, down one until we are out of the grid
+		// Then move up to the previous row, always starting at column 0
+		for (int row = gridLetters.length - 2; row >= 0; row--) {
+			// re-init vars as we move down each row because we
+			// are creating a new GridLine
+			column = 0;
+			nextColumn = 0;
+			nextRowDown = row;
+			lineString = "";
+			gridLineCoordinateList = new ArrayList<LocCoordinate>();
+			// In a diagonal GridLine, we iterate through rows,
+			// but we always start at column 0 as our first point
+			lineString += gridLetters[row][column].getLetter();
+			gridLineCoordinateList.add(gridLetters[row][column].getLocCoordinate());
+			nextColumn++;
+			nextRowDown++;
+
+			do {
+				lineString += gridLetters[nextRowDown][nextColumn].getLetter();
+				gridLineCoordinateList.add(gridLetters[nextRowDown][nextColumn].getLocCoordinate());
+				nextColumn++;
+				nextRowDown++;
+			} while (nextColumn < gridLetters.length && nextRowDown < gridLetters.length);
+			gridLine = new GridLine(lineString, gridLineCoordinateList);
+			gridLines.add(gridLine);
+		}
+	}
+
+	private void formatGridLinesFromDiagonalsBottomLeftToTopRightPart2() {
+
+		GridLine gridLine;
+		ArrayList<LocCoordinate> gridLineCoordinateList;
+		String lineString;
+		int column = 0;
+		int nextColumn = 0;
+		int nextRowDown = 0;
+
+		// Start at the next to the last row (which is grid size -2 because the index
+		// starts at 0)
+		// Start at column 0
+		// Then move right one, down one until we are out of the grid
+		// Then move up to the previous row, always starting at column 0
+		for (int row = gridLetters.length - 2; row >= 0; row--) {
+			// re-init vars as we move down each row because we
+			// are creating a new GridLine
+			column = 0;
+			nextColumn = 0;
+			nextRowDown = row;
+			lineString = "";
+			gridLineCoordinateList = new ArrayList<LocCoordinate>();
+			// In a diagonal GridLine, we iterate through rows,
+			// but we always start at column 0 as our first point
+			lineString += gridLetters[row][column].getLetter();
+			gridLineCoordinateList.add(gridLetters[row][column].getLocCoordinate());
+			nextColumn++;
+			nextRowDown++;
+
+			do {
+				lineString += gridLetters[nextRowDown][nextColumn].getLetter();
+				gridLineCoordinateList.add(gridLetters[nextRowDown][nextColumn].getLocCoordinate());
+				nextColumn++;
+				nextRowDown++;
+			} while (nextColumn < gridLetters.length && nextRowDown < gridLetters.length);
+			gridLine = new GridLine(lineString, gridLineCoordinateList);
+			gridLines.add(gridLine);
+		}
+	}
+	
 	public ArrayList<GridLine> getGridLines() {
 		return gridLines;
+	}
+
+	public GridLetter[][] getGridLetters() {
+		return gridLetters;
 	}
 
 	@Override
@@ -274,9 +333,7 @@ public class Grid {
 			}
 			System.out.println();
 		}
-		return "Grid [gridLetters=" + Arrays.toString(gridLetters) + ",  gridLines="
-				+ gridLines  + "]";
+		return "Grid [gridLetters=" + Arrays.toString(gridLetters) + ",  gridLines=" + gridLines + "]";
 	}
-
 
 }
