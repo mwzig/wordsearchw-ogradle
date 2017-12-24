@@ -9,7 +9,7 @@ public class GridLine {
 		this.lineString = gridCharString;
 		this.locCoordinateList = locCoordinateList;
 	}
-	public String getGridCharString() {
+	public String getLineString() {
 		return lineString;
 	}
 	public ArrayList<LocCoordinate> getGridLocCoordinateList() {

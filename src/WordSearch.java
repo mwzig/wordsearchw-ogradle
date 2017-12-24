@@ -16,7 +16,9 @@ public class WordSearch {
 
 		for (String wordToFind : wordsToFind) {
 			findWord(wordToFind);
+			
 		}
+		System.out.println(foundWords.toString());
 
 	}
 
@@ -26,9 +28,9 @@ public class WordSearch {
 		GridLine gridLine;
 		for (int i = 0; i < letterGrid.getGridLines().size(); i++) {
 			gridLine = letterGrid.getGridLines().get(i);
-			if (gridLine.getGridCharString().contains(wordToFind)) {
+			if (gridLine.getLineString().contains(wordToFind)) {
 				ArrayList<LocCoordinate> locList = gridLine.getGridLocCoordinateList();
-				int foundAtIndex = gridLine.getGridCharString().indexOf(wordToFind);
+				int foundAtIndex = gridLine.getLineString().indexOf(wordToFind);
 				locCoordList.add(locList.get(foundAtIndex));
 				// need to start at index 1 because we've already
 				// got the first coordinate above
