@@ -281,20 +281,16 @@ public class Grid {
 		GridLine gridLine;
 		ArrayList<LocCoordinate> gridLineCoordinateList;
 		String lineString;
-		int column = 0;
+		int row = 0;
 		int nextColumn = 0;
 		int nextRowDown = 0;
 
-		// Start at the next to the last row (which is grid size -2 because the index
-		// starts at 0)
-		// Start at column 0
+		// Start at the top row, second column (row 0 column 1)
 		// Then move right one, down one until we are out of the grid
-		// Then move up to the previous row, always starting at column 0
-		for (int row = gridLetters.length - 2; row >= 0; row--) {
+		for (int column = 1; column < gridLetters.length -1;  column ++) {
 			// re-init vars as we move down each row because we
 			// are creating a new GridLine
-			column = 0;
-			nextColumn = 0;
+			nextColumn = column;
 			nextRowDown = row;
 			lineString = "";
 			gridLineCoordinateList = new ArrayList<LocCoordinate>();
@@ -310,7 +306,7 @@ public class Grid {
 				gridLineCoordinateList.add(gridLetters[nextRowDown][nextColumn].getLocCoordinate());
 				nextColumn++;
 				nextRowDown++;
-			} while (nextColumn < gridLetters.length && nextRowDown < gridLetters.length);
+			} while (nextColumn < gridLetters.length  && nextRowDown < gridLetters.length);
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
 		}
