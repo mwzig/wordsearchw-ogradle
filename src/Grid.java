@@ -119,7 +119,8 @@ public class Grid {
 		}
 		// Second, format rows R to L into GridLine objects and add them to the
 		// Gridline ArrayList
-
+		// May move this to a separate method in the GridLine object
+/*
 		for (int row = 0; row < gridLetters.length; row++) {
 			lineString = "";
 			gridLineCoordinateList = new ArrayList<LocCoordinate>();
@@ -131,6 +132,7 @@ public class Grid {
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
 		}
+		*/
 	}
 
 	private void formatGridLinesFromColumns() {
