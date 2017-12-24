@@ -4,7 +4,7 @@ of a horizontal row.  Then getting the coordinates, then searching backwards.
 Second Day 12/21:  after family visit (3 hours?) (no googling still except for 2-dim arrays,
 I want my solution to be original to me!!!).
 Got the vertical fwd and backward searches working.  Started thinking about how
-to search diagonally.  Realized I need a redesign and I need to have g GridLetter object
+to search diagonally.  Realized I need a redesign and I need to have a GridLetter object
 that has a Letter and its coordinates.  Then I need a 2-dim array of those to 
 represent the word search grid.  Then I need to make a GridLine object out of those 
 objects to represent horizontal, vertical and diagonal lines.  Lots of thought on a better
@@ -13,4 +13,6 @@ class design to handle this problem.
 Third Day 12/22:  spent some time with pencil and paper drawing out class desgins.
 
 
-Fourth Day 12/23: back on the plane with some focused coding time.s
+Fourth Day 12/23: back on the plane with some focused coding time.
+
+12/24 - Creating tests for Grid object.

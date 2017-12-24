@@ -5,15 +5,13 @@ import java.util.Arrays;
 public class Grid {
 
 	private GridLetter[][] gridLetters;
-	private ArrayList<String> wordsToFind;
 	private ArrayList<GridLine> gridLines;
-	private ArrayList<FoundWord> foundWords;
-
+	
 	public Grid(String inputFile) {
 		// todo - read input file, for each letter, create a GridLetter
-		// create the 2-dim array of letters gridLetters
-		// initialize the private member var wordsToFind
-		// initialize the private member var gridLines by reading
+		// create the grid which is a 2-dim array of GridLetters
+		// initialize the private member var wordsToFind from the file
+		// Initialize the private member var gridLines by reading
 		// each row L to R, R to L columns T to B, B to T,
 		// diagonal TL to BR (L to R and R to L), and
 		// diagonal BL to TR (L to R and R to L)
@@ -57,23 +55,27 @@ public class Grid {
 			gridLetters[xCoordinate][7] = gridLetter;
 
 		}
-		String wordToFind1 = "bcd";
-		String wordToFind2 = "hgf";
-		wordsToFind = new ArrayList<String>();
-		wordsToFind.add(wordToFind1);
-		wordsToFind.add(wordToFind2);
 
 		formatGridLines();
 	}
 
+	public Grid(GridLetter[][] gridLetters) {
+		this.gridLetters = gridLetters;
+		formatGridLines();
+	}
+	
 	private void formatGridLines() {
-		formatGridLinesFromRows();
+		gridLines = new ArrayList<GridLine>();
+		
+		//formatGridLinesFromRows();
 		//formatGridLinesFromColumns();
-		formatGridLinesFromDiagonals();
+		//formatGridLinesFromDiagonalsTopLeftToBottomRight();
+		formatGridLinesFromDiagonalsBottomLeftToTopRight();
 	}
 
 	private void formatGridLinesFromColumns() {
 
+		
 		// first, format rows L to R into GridLine objects and add them to the
 		// GridLine ArrayList
 		GridLine gridLine;
@@ -92,7 +94,7 @@ public class Grid {
 		}
 	}
 
-	private void formatGridLinesFromDiagonals() {
+	private void formatGridLinesFromDiagonalsTopLeftToBottomRight() {
 	
 		GridLine gridLine;
 		ArrayList<LocCoordinate> gridLineCoordinateList;
@@ -121,8 +123,6 @@ public class Grid {
 			nextRowUp--;
 			
 			do {
-				System.out.println("nextColumn is " + nextColumn);
-				System.out.println("nextRowUp is " + nextRowUp);
 				lineString += gridLetters[nextRowUp][nextColumn].getLetter();
 				gridLineCoordinateList.add(gridLetters[nextRowUp][nextColumn].getLocCoordinate());
 				nextColumn++;
@@ -131,10 +131,47 @@ public class Grid {
 			} while (nextColumn < gridLetters.length  && nextRowUp >= 0); 
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
-			System.out.println(gridLine);
 		}
 	}
 
+	private void formatGridLinesFromDiagonalsBottomLeftToTopRight() {
+		
+		GridLine gridLine;
+		ArrayList<LocCoordinate> gridLineCoordinateList;
+		String lineString;
+		int column = 0;
+		int nextColumn = 0;
+		int nextRowDown = 0;
+	
+		// Start at the next to the last row (which is grid size -2 because the index starts at 0)
+		// Start at column 0
+		// Then move right one, down one until we are out of the grid
+		// Then move up to the previous row, always starting at column 0
+		for (int row = gridLetters.length-2; row >= 0; row--) {
+			//re-init vars as we move down each row because we 
+			//are creating a new GridLine
+			column = 0;
+			nextColumn = 0;
+			nextRowDown = row;
+			lineString = "";
+			gridLineCoordinateList = new ArrayList<LocCoordinate>();
+			//In a diagonal GridLine, we iterate through rows, 
+			//but we always start at column 0 as our first point
+			lineString += gridLetters[row][column].getLetter();
+			gridLineCoordinateList.add(gridLetters[row][column].getLocCoordinate());
+			nextColumn++;
+			nextRowDown++;
+			
+			do {
+				lineString += gridLetters[nextRowDown][nextColumn].getLetter();
+				gridLineCoordinateList.add(gridLetters[nextRowDown][nextColumn].getLocCoordinate());
+				nextColumn++;
+				nextRowDown++;
+			} while (nextColumn < gridLetters.length  && nextRowDown < gridLetters.length); 
+			gridLine = new GridLine(lineString, gridLineCoordinateList);
+			gridLines.add(gridLine);
+		}
+	}
 	private void formatGridLinesFromRows() {
 		// first, format rows L to R into GridLine objects and add them to the
 		// GridLine ArrayList
@@ -168,6 +205,14 @@ public class Grid {
 		}
 	}
 
+	public GridLetter[][] getGridLetters() {
+		return gridLetters;
+	}
+
+	public ArrayList<GridLine> getGridLines() {
+		return gridLines;
+	}
+
 	@Override
 	public String toString() {
 
@@ -177,24 +222,9 @@ public class Grid {
 			}
 			System.out.println();
 		}
-		return "Grid [gridLetters=" + Arrays.toString(gridLetters) + ", wordsToFind=" + wordsToFind + ", gridLines="
-				+ gridLines + ", foundWords=" + foundWords + "]";
+		return "Grid [gridLetters=" + Arrays.toString(gridLetters) + ",  gridLines="
+				+ gridLines  + "]";
 	}
 
-	public GridLetter[][] getGridLetters() {
-		return gridLetters;
-	}
-
-	public ArrayList<String> getWordsToFind() {
-		return wordsToFind;
-	}
-
-	public ArrayList<GridLine> getGridLines() {
-		return gridLines;
-	}
-
-	public ArrayList<FoundWord> getFoundWords() {
-		return foundWords;
-	}
 
 }
