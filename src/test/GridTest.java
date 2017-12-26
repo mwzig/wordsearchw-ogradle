@@ -1,24 +1,24 @@
-import static org.junit.jupiter.api.Assertions.*;
+package test;
+
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class GridTest {
+import main.Grid;
+import main.GridLetter;
+import main.GridLine;
+import main.LocCoordinate;
+
+public class GridTest {
 
 	private GridLetter[][] inputGrid;
-	private ArrayList<String> testList;
-	
-	@Before
-    public void executedBeforeEach() {
-        testList = new ArrayList();
-        System.out.println("@Before: executedBeforeEach");
-    }
 
 	@Before
-//	public GridLetter[][] formatTestGrid() {
-	public void formatTestGrid() {
+	public void setUp() throws Exception {
+		
 		LocCoordinate locCoordinate;
 		GridLetter gridLetter;
 		inputGrid = new GridLetter[8][8];
@@ -55,17 +55,11 @@ class GridTest {
 			locCoordinate = new LocCoordinate(xCoordinate, 7);
 			gridLetter = new GridLetter('h', locCoordinate);
 			inputGrid[xCoordinate][7] = gridLetter;
-
 		}
-		//return inputGrid;
-		
 	}
 
-	@Test
-	void testGetGridLinesFromFormatRows() {
+		public void testGetGridLinesFromFormatRows() {
 
-		//GridLetter[][] inputGrid = formatTestGrid();
-		
 		String testType = "Rows";
 		Grid testGrid = new Grid(inputGrid, testType);
 		ArrayList<GridLine> gridLines = testGrid.getGridLines();
@@ -93,10 +87,8 @@ class GridTest {
 	// If the reverse logic works for rows, then it will also work for 
 	// columns and diagonals...
 	@Test
-	void testGridLineGetReverse() {
+	public void testGridLineGetReverse() {
 
-		//GridLetter[][] inputGrid = formatTestGrid();
-		
 		String testType = "Rows";
 		Grid testGrid = new Grid(inputGrid, testType);
 		ArrayList<GridLine> gridLines = testGrid.getGridLines();
@@ -122,10 +114,8 @@ class GridTest {
 	}
 
 	@Test
-	void testGetGridLinesFromFormatColumns() {
+	public void testGetGridLinesFromFormatColumns() {
 
-		//GridLetter[][] inputGrid = formatTestGrid();
-		
 		String testType = "Columns";
 		Grid testGrid = new Grid(inputGrid, testType);
 		ArrayList<GridLine> gridLines = testGrid.getGridLines();
@@ -149,9 +139,7 @@ class GridTest {
 	}
 
 	@Test
-	void testGetGridLinesFromFormatDiagonalsTopLeftToBottomRight() {
-
-		//GridLetter[][] inputGrid = formatTestGrid();
+	public void testGetGridLinesFromFormatDiagonalsTopLeftToBottomRight() {
 		
 		String testType = "DiagonalTopLeftToBottomRight";
 		Grid testGrid = new Grid(inputGrid, testType);
@@ -180,10 +168,8 @@ class GridTest {
 	}
 
 	@Test
-	void testGetGridLinesFromFormatDiagonalsBottomLeftToTopRight() {
+	public void testGetGridLinesFromFormatDiagonalsBottomLeftToTopRight() {
 
-		//GridLetter[][] inputGrid = formatTestGrid();
-	
 		String testType = "DiagonalBottomLeftToTopRight";
 		Grid testGrid = new Grid(inputGrid, testType);
 		ArrayList<GridLine> gridLines = testGrid.getGridLines();
@@ -213,8 +199,3 @@ class GridTest {
 	}
 
 }
-
-
-
-
-

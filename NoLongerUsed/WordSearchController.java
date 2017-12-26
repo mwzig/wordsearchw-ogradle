@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+import main.FoundWord;
+import main.LocCoordinate;
+
 public class WordSearchController {
 	private WordSearchV1 wordSearch;
 	private FoundWord foundWord;

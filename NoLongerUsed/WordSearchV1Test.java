@@ -2,6 +2,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import main.FoundWord;
+
 public class WordSearchV1Test {
 
 	// Iteration 1 - started with a WordSearch constructor that 

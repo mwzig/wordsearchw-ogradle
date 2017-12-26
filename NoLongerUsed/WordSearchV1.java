@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+import main.FoundWord;
+import main.LocCoordinate;
+
 public class WordSearchV1 {
 
 	public static void main(String[] args) {

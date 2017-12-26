@@ -5,7 +5,12 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-class GridTest {
+import main.Grid;
+import main.GridLetter;
+import main.GridLine;
+import main.LocCoordinate;
+
+class GridTest2 {
 
 	private GridLetter[][] inputGrid;
 	private ArrayList<String> testList;

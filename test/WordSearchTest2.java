@@ -2,8 +2,11 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import main.Grid;
+import main.WordSearch;
 
-class WordSearchTest {
+
+class WordSearchTest2 {
 
 	@Test
 	void InitialTest() {

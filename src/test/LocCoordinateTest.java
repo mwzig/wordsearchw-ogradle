@@ -1,22 +1,24 @@
-import static org.junit.jupiter.api.Assertions.*;
+package test;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-class LocCoordinateTest {
+import main.LocCoordinate;
+
+public class LocCoordinateTest {
 
 	@Test
-	void testCreateLocCoordinate() {
+	public void testCreateLocCoordinate() {
 		LocCoordinate locCoord = new LocCoordinate(0,5);
 		assertNotNull(locCoord);
 	}
 
 	@Test
-	void testToString() {
+	public void testToString() {
 		String expectedOutput = new String("(0,5)");
 		LocCoordinate locCoord = new LocCoordinate(0,5);
 		String locCoordToString = locCoord.toString();
 		assertEquals(expectedOutput, locCoordToString);
 		
 	}
-	
-	}
+}

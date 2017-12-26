@@ -1,3 +1,4 @@
+package main;
 import java.util.ArrayList;
 
 public class WordSearch {
@@ -12,14 +13,19 @@ public class WordSearch {
 		foundWords = new ArrayList<FoundWord>();
 	}
 
-	public void findWords() {
+	// If all words found, return true
+	public boolean findWords() {
 
 		for (String wordToFind : wordsToFind) {
 			findWord(wordToFind);
 			
 		}
-		System.out.println(foundWords.toString());
-
+		if (wordsToFind.size() == foundWords.size()) {
+			return true; 
+		} else {
+			return false;
+		}
+		
 	}
 
 	public void findWord(String wordToFind) {
