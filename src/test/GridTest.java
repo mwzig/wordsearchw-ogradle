@@ -1,11 +1,19 @@
-import static org.junit.jupiter.api.Assertions.*;
+package test;
+
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class GridTest {
+import main.Grid;
+import main.GridLetter;
+import main.GridLine;
+import main.LocCoordinate;
 
+public class GridTest {
+
+	
 	public GridLetter[][] formatTestGrid() {
 		LocCoordinate locCoordinate;
 		GridLetter gridLetter;
@@ -50,7 +58,7 @@ class GridTest {
 	}
 
 	@Test
-	void testGetGridLinesFromFormatRows() {
+	public void testGetGridLinesFromFormatRows() {
 
 		GridLetter[][] inputGrid = formatTestGrid();
 		
@@ -81,7 +89,7 @@ class GridTest {
 	// If the reverse logic works for rows, then it will also work for 
 	// columns and diagonals...
 	@Test
-	void testGridLineGetReverse() {
+	public void testGridLineGetReverse() {
 
 		GridLetter[][] inputGrid = formatTestGrid();
 		
@@ -110,7 +118,7 @@ class GridTest {
 	}
 
 	@Test
-	void testGetGridLinesFromFormatColumns() {
+	public void testGetGridLinesFromFormatColumns() {
 
 		GridLetter[][] inputGrid = formatTestGrid();
 		
@@ -137,7 +145,7 @@ class GridTest {
 	}
 
 	@Test
-	void testGetGridLinesFromFormatDiagonalsTopLeftToBottomRight() {
+	public void testGetGridLinesFromFormatDiagonalsTopLeftToBottomRight() {
 
 		GridLetter[][] inputGrid = formatTestGrid();
 		
@@ -168,7 +176,7 @@ class GridTest {
 	}
 
 	@Test
-	void testGetGridLinesFromFormatDiagonalsBottomLeftToTopRight() {
+	public void testGetGridLinesFromFormatDiagonalsBottomLeftToTopRight() {
 
 		GridLetter[][] inputGrid = formatTestGrid();
 	
@@ -200,9 +208,5 @@ class GridTest {
 	
 	}
 
+
 }
-
-
-
-
-

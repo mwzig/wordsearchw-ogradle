@@ -1,13 +1,18 @@
-import static org.junit.jupiter.api.Assertions.*;
+package test;
+
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class FoundWordTest {
+import main.FoundWord;
+import main.LocCoordinate;
+
+public class FoundWordTest {
 
 	@Test
-	void testToStringOneCoordinate() {
+	public void testToStringOneCoordinate() {
 		String expectedOutput = "abc: (0,1)";
 		LocCoordinate locCoord = new LocCoordinate(0,1);
 		ArrayList<LocCoordinate> locList = new ArrayList<LocCoordinate>();
@@ -19,7 +24,7 @@ class FoundWordTest {
 	}
 
 	@Test
-	void testToStringTwoCoordinates() {
+	public void testToStringTwoCoordinates() {
 		String expectedOutput = "abc: (0,1),(0,2)";
 		LocCoordinate locCoord1 = new LocCoordinate(0,1);
 		LocCoordinate locCoord2 = new LocCoordinate(0,2);
@@ -31,5 +36,4 @@ class FoundWordTest {
 		assertEquals(expectedOutput, outputToCheck);
 				
 	}
-
 }
