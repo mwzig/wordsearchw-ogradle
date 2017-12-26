@@ -180,6 +180,25 @@ public class WordSearchTest {
 	}
 
 	@Test
+	public void FindWordsDiagonalTopLeftBottomRightReverse() {
+		ArrayList<String> wordsToFind = new ArrayList<String>();
+		wordsToFind.add("be");
+		wordsToFind.add("cfi");
+		wordsToFind.add("dgjm");
+		wordsToFind.add("hkn");
+		wordsToFind.add("lo");
+			
+		Grid letterGrid = new Grid(inputGrid);
+		WordSearch wordSearch = new WordSearch(letterGrid, wordsToFind);
+		boolean bAllWordsFound = wordSearch.findWords();
+		for (FoundWord foundWord: wordSearch.getFoundWords()) {
+			System.out.println("diag revers");
+			System.out.println(foundWord.toString());
+		}
+		assertTrue(bAllWordsFound);
+	}
+
+	@Test
 	public void FindWordsDiagonalBottomLeftTopRight() {
 		ArrayList<String> wordsToFind = new ArrayList<String>();
 		wordsToFind.add("in");
@@ -191,10 +210,6 @@ public class WordSearchTest {
 		Grid letterGrid = new Grid(inputGrid);
 		WordSearch wordSearch = new WordSearch(letterGrid, wordsToFind);
 		boolean bAllWordsFound = wordSearch.findWords();
-		for (FoundWord foundWord: wordSearch.getFoundWords()) {
-			System.out.println("found words diagonally top left bottom right");
-			System.out.println(foundWord.toString());
-		}
 		assertTrue(bAllWordsFound);
 	}
 }
