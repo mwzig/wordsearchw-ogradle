@@ -47,5 +47,9 @@ public class WordSearch {
 			}
 		}
 	}
+
+	public ArrayList<FoundWord> getFoundWords() {
+		return foundWords;
+	}
 	 
 }
