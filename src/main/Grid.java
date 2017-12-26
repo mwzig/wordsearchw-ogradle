@@ -117,7 +117,7 @@ public class Grid {
 			}
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
-			GridLine reverseGridLine = gridLine.getReverseLine();
+			GridLine reverseGridLine = gridLine;
 			gridLines.add(reverseGridLine);
 		}
 		// Second, format rows R to L into GridLine objects and add them to the
@@ -153,9 +153,9 @@ public class Grid {
 
 			}
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
-			gridLines.add(gridLine);
-			GridLine reverseGridLine = gridLine.getReverseLine();
+			GridLine reverseGridLine = gridLine;
 			gridLines.add(reverseGridLine);
+			gridLines.add(gridLine);
 		}
 	}
 
@@ -196,7 +196,7 @@ public class Grid {
 			} while (nextColumn < gridLetters.length && nextRowUp >= 0);
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
-			GridLine reverseGridLine = gridLine.getReverseLine();
+			GridLine reverseGridLine = gridLine;
 			gridLines.add(reverseGridLine);
 		}
 	}
@@ -241,7 +241,7 @@ public class Grid {
 			} while (nextColumn < gridLetters.length && nextRowUp >= 0);
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
-			GridLine reverseGridLine = gridLine.getReverseLine();
+			GridLine reverseGridLine = gridLine;
 			gridLines.add(reverseGridLine);
 		}
 
@@ -284,7 +284,7 @@ public class Grid {
 			} while (nextColumn < gridLetters.length && nextRowDown < gridLetters.length);
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
-			GridLine reverseGridLine = gridLine.getReverseLine();
+			GridLine reverseGridLine = gridLine;
 			gridLines.add(reverseGridLine);
 		}
 	}
@@ -322,7 +322,7 @@ public class Grid {
 			} while (nextColumn < gridLetters.length  && nextRowDown < gridLetters.length);
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
-			GridLine reverseGridLine = gridLine.getReverseLine();
+			GridLine reverseGridLine = gridLine;
 			gridLines.add(reverseGridLine);
 		}
 	}
