@@ -123,6 +123,21 @@ public class WordSearchTest {
 	}
 
 	@Test
+	public void TestWordSearchPrintOutput() {
+		ArrayList<String> wordsToFind = new ArrayList<String>();
+		wordsToFind.add("abcd");
+		String expectedPrintOutput = "abcd: (0,0),(0,1),(0,2),(0,3)";
+		
+		Grid letterGrid = new Grid(inputGrid);
+		WordSearch wordSearch = new WordSearch(letterGrid, wordsToFind);
+		wordSearch.findWords();
+		for (FoundWord foundWord: wordSearch.getFoundWords()) {
+			System.out.println(foundWord.toString());
+		}
+		assertEquals(expectedPrintOutput, wordSearch.getFoundWords().get(0).toString());
+	}
+
+	@Test
 	public void FindWordsAcrossReverse() {
 		ArrayList<String> wordsToFind = new ArrayList<String>();
 		wordsToFind.add("dcba");
@@ -191,10 +206,6 @@ public class WordSearchTest {
 		Grid letterGrid = new Grid(inputGrid);
 		WordSearch wordSearch = new WordSearch(letterGrid, wordsToFind);
 		boolean bAllWordsFound = wordSearch.findWords();
-		for (FoundWord foundWord: wordSearch.getFoundWords()) {
-			System.out.println("diag revers");
-			System.out.println(foundWord.toString());
-		}
 		assertTrue(bAllWordsFound);
 	}
 
