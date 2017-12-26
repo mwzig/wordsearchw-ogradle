@@ -20,7 +20,7 @@ public class GridLine {
 
 		ArrayList<LocCoordinate> revLocCoordinateList = new ArrayList<LocCoordinate>();
 		String reverseLineString = new StringBuilder(lineString).reverse().toString();
-		for (int i = reverseLineString.length(); i >=0  ;i--) {
+		for (int i = reverseLineString.length()-1; i >=0  ;i--) {
 			revLocCoordinateList.add(locCoordinateList.get(i));
 		}
 		GridLine reverseGridLine = new GridLine(reverseLineString, revLocCoordinateList);

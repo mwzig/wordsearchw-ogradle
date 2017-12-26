@@ -10,13 +10,13 @@ represent the word search grid.  Then I need to make a GridLine object out of th
 objects to represent horizontal, vertical and diagonal lines.  Lots of thought on a better
 class design to handle this problem.
 
-Third Day 12/22:  spent some time with pencil and paper drawing out class desgins.
+Third Day 12/22:  spent some time with pencil and paper drawing out class designs.
 
 
 Fourth Day 12/23: back on the plane with a little time to code out new logic. Crying baby on plane and no dinner.
 
 
-Fifth Dady 12/24 - Creating tests for Grid object.  Things are coming together. Next on the list
+Fifth Day 12/24 - Creating tests for Grid object.  Things are coming together. Next on the list
  is testing the reverse GridLine logic.  Then the loop to actually search the whole
  grid for words to find.  Then reading in the grid and words to find from a file.  Then
  desk check, reformat, more testing, and more doc.

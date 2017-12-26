@@ -78,6 +78,37 @@ class GridTest {
 		assertEquals(expectedConcatGridLineStrings, checkConcatGridLineStrings);
 	}
 
+	// If the reverse logic works for rows, then it will also work for 
+	// columns and diagonals...
+	@Test
+	void testGridLineGetReverse() {
+
+		GridLetter[][] inputGrid = formatTestGrid();
+		
+		String testType = "Rows";
+		Grid testGrid = new Grid(inputGrid, testType);
+		ArrayList<GridLine> gridLines = testGrid.getGridLines();
+		String checkConcatGridLineStrings = "";
+		for (GridLine gridLine: gridLines) {
+			checkConcatGridLineStrings += gridLine.getReverseLine().getLineString();
+			System.out.println(gridLine.toString());
+		}
+
+		String expectedReverseGridLineString = 
+		"hgfedcba" + 
+		"hgfedcba" + 
+		"hgfedcba" + 
+		"hgfedcba" + 
+		"hgfedcba" + 
+		"hgfedcba" + 
+		"hgfedcba" + 
+		"hgfedcba";
+					
+		System.out.println("grid row string is " + checkConcatGridLineStrings);
+		
+		assertEquals(expectedReverseGridLineString, checkConcatGridLineStrings);
+	}
+
 	@Test
 	void testGetGridLinesFromFormatColumns() {
 
