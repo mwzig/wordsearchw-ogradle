@@ -119,10 +119,6 @@ public class WordSearchTest {
 		Grid letterGrid = new Grid(inputGrid);
 		WordSearch wordSearch = new WordSearch(letterGrid, wordsToFind);
 		boolean bAllWordsFound = wordSearch.findWords();
-		for (FoundWord foundWord: wordSearch.getFoundWords()) {
-			System.out.println("found words down");
-			System.out.println(foundWord.toString());
-		}
 		assertTrue(bAllWordsFound);
 	}
 	@Test
@@ -136,10 +132,6 @@ public class WordSearchTest {
 		Grid letterGrid = new Grid(inputGrid);
 		WordSearch wordSearch = new WordSearch(letterGrid, wordsToFind);
 		boolean bAllWordsFound = wordSearch.findWords();
-		for (FoundWord foundWord: wordSearch.getFoundWords()) {
-			System.out.println("found words across");
-			System.out.println(foundWord.toString());
-		}
 		assertTrue(bAllWordsFound);
 	}
 	@Test
@@ -150,6 +142,21 @@ public class WordSearchTest {
 		wordsToFind.add("mjgd");
 		wordsToFind.add("nkh");
 		wordsToFind.add("ol");
+			
+		Grid letterGrid = new Grid(inputGrid);
+		WordSearch wordSearch = new WordSearch(letterGrid, wordsToFind);
+		boolean bAllWordsFound = wordSearch.findWords();
+		assertTrue(bAllWordsFound);
+	}
+
+	@Test
+	public void FindWordsDiagonalBottomLeftTopRight() {
+		ArrayList<String> wordsToFind = new ArrayList<String>();
+		wordsToFind.add("in");
+		wordsToFind.add("ejo");
+		wordsToFind.add("afkp");
+		wordsToFind.add("bgl");
+		wordsToFind.add("ch");
 			
 		Grid letterGrid = new Grid(inputGrid);
 		WordSearch wordSearch = new WordSearch(letterGrid, wordsToFind);
