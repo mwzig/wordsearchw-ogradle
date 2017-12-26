@@ -117,6 +117,8 @@ public class Grid {
 			}
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
+			GridLine reverseGridLine = gridLine.getReverseLine();
+			gridLines.add(reverseGridLine);
 		}
 		// Second, format rows R to L into GridLine objects and add them to the
 		// Gridline ArrayList
@@ -152,6 +154,8 @@ public class Grid {
 			}
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
+			GridLine reverseGridLine = gridLine.getReverseLine();
+			gridLines.add(reverseGridLine);
 		}
 	}
 
@@ -192,6 +196,8 @@ public class Grid {
 			} while (nextColumn < gridLetters.length && nextRowUp >= 0);
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
+			GridLine reverseGridLine = gridLine.getReverseLine();
+			gridLines.add(reverseGridLine);
 		}
 	}
 
@@ -235,6 +241,8 @@ public class Grid {
 			} while (nextColumn < gridLetters.length && nextRowUp >= 0);
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
+			GridLine reverseGridLine = gridLine.getReverseLine();
+			gridLines.add(reverseGridLine);
 		}
 
 	}
@@ -276,6 +284,8 @@ public class Grid {
 			} while (nextColumn < gridLetters.length && nextRowDown < gridLetters.length);
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
+			GridLine reverseGridLine = gridLine.getReverseLine();
+			gridLines.add(reverseGridLine);
 		}
 	}
 
@@ -312,6 +322,8 @@ public class Grid {
 			} while (nextColumn < gridLetters.length  && nextRowDown < gridLetters.length);
 			gridLine = new GridLine(lineString, gridLineCoordinateList);
 			gridLines.add(gridLine);
+			GridLine reverseGridLine = gridLine.getReverseLine();
+			gridLines.add(reverseGridLine);
 		}
 	}
 	

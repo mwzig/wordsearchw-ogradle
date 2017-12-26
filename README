@@ -22,4 +22,8 @@ Fifth Day 12/24 - Creating tests for Grid object.  Things are coming together. N
  desk check, reformat, more testing, and more doc.
  
   
-
+12/26 - Check Pillar Kata instructions online again - had downloaded just the instructions 
+for the WordSearch Kata since I was planning to work on flights w/o wifi.  Had forgotten that
+I needed to watch the testing video.  Watched it, and refactored my test classes (had planned
+to do that anyway), and added @Before to some tests where appropriate.  Changing how I commit
+and test some because of watching the video.
