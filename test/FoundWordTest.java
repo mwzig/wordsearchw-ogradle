@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 
 class FoundWordTest {
 
+	// Test the FoundWord toString method here because the FoundWord class 
+	// really just stores the word found and its list of coordinates,
+	// and the toString method on it is what will be used eventually to print out
+	// the list of found words and their coordinates.
 	@Test
 	void testToStringOneCoordinate() {
 		String expectedOutput = "abc: (0,1)";

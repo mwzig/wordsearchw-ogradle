@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 class LocCoordinateTest {
 
 	@Test
-	void testLocCoordinate() {
+	void testCreateLocCoordinate() {
 		LocCoordinate locCoord = new LocCoordinate(0,5);
 		assertNotNull(locCoord);
 	}
