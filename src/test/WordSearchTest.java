@@ -135,6 +135,7 @@ public class WordSearchTest {
 		boolean bAllWordsFound = wordSearch.findWords();
 		assertTrue(bAllWordsFound);
 	}
+	
 	@Test
 	public void FindWordsDown() {
 		ArrayList<String> wordsToFind = new ArrayList<String>();
@@ -148,6 +149,21 @@ public class WordSearchTest {
 		boolean bAllWordsFound = wordSearch.findWords();
 		assertTrue(bAllWordsFound);
 	}
+	
+	@Test
+	public void FindWordsDownReverse() {
+		ArrayList<String> wordsToFind = new ArrayList<String>();
+		wordsToFind.add("miea");
+		wordsToFind.add("njf");
+		wordsToFind.add("kg");
+		wordsToFind.add("hd");
+		
+		Grid letterGrid = new Grid(inputGrid);
+		WordSearch wordSearch = new WordSearch(letterGrid, wordsToFind);
+		boolean bAllWordsFound = wordSearch.findWords();
+		assertTrue(bAllWordsFound);
+	}
+	
 	@Test
 	public void FindWordsDiagonalTopLeftBottomRight() {
 		ArrayList<String> wordsToFind = new ArrayList<String>();
