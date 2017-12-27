@@ -96,6 +96,7 @@ public class WordSearch {
 			
 			while ((gridInputString = br.readLine()) != null) {
 				gridInputStringNoCommas = gridInputString.replaceAll(",",   "");
+				gridInputStringNoCommas = gridInputStringNoCommas.replaceAll(" ", "");
 			    gridData.add(gridInputStringNoCommas);
 				System.out.println(gridInputStringNoCommas);
 			}
