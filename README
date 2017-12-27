@@ -28,6 +28,6 @@ I needed to watch the testing video.  Watched it, and refactored my test classes
 to do that anyway), and added @Before to some tests where appropriate.  Changing how I commit
 and test some because of watching the video.  Have major tests working.   
 Still need to refactor & remove & cleanup some code, test with more input, and further 
-document.
+document.  NEED EITHER TO DOCUMENT OR NOTE ABOUT INSTRUCTIONS SEEM TO HAVE X & Y MIXED UP
 
 
