@@ -9,6 +9,9 @@ that has a Letter and its coordinates.  Then I need a 2-dim array of those to
 represent the word search grid.  Then I need to make a GridLine object out of those 
 objects to represent horizontal, vertical and diagonal lines.  Lots of thought on a better
 class design to handle this problem.
+(Original classes used when first starting to code are in the NoLongerUsed folder).
+
+
 
 Third Day 12/22:  spent some time with pencil and paper drawing out class designs.
 
@@ -44,5 +47,7 @@ as a parameter and run from the command line.
 
 initial build was not done the way they taught us in WCCI because I didn't have WIFI access to get 
 the gradle build file.
+
+Area for growth - understanding gradle/build environments
 
 also need instructions on how to run and what is what
