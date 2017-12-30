@@ -37,12 +37,12 @@ be found multiple times, although that would be unusual.
 Retesting all tests - noticed that the ones in GridTest no longer work because I added logic when formatting
 GridLines to also get and add the reverse Grid Line to the ArrayList of GridLines in the Grid object.
 Fixed the tests to account for this by adding the reverse of the lines to the expected strings.
-Removed System.out.printlns.  
+Removed System.out.printlns.  Added a main method to WordSearch so that it could take an input file
+as a parameter and run from the command line.
 
 
 
 initial build was not done the way they taught us in WCCI because I didn't have WIFI access to get 
 the gradle build file.
 
-need a main method that takes a file name in
 also need instructions on how to run and what is what
