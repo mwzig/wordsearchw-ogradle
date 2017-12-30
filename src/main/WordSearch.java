@@ -99,8 +99,7 @@ public class WordSearch {
 	public void readInputFile() {
 		String basePath = new File("").getAbsolutePath();
 		String inputBasePath = basePath + "/resources";
-		System.out.println(basePath);
-	
+		
 		// Now read in the input file. We will read the data on
 		// each line into an arraylist and parse thru it later
 		String inputFileName = inputBasePath + this.inputFileName;
@@ -111,14 +110,8 @@ public class WordSearch {
 			BufferedReader br = new BufferedReader(fr);
 			String gridInputString, gridInputStringNoCommas, inputWordsToFind;
 			inputWordsToFind = br.readLine();
-			System.out.println(inputWordsToFind);
 			String[] words = inputWordsToFind.split(",");
-			
-			System.out.println("words.length is " + words.length);
-			for (int i = 0; i < words.length; i++) {
-				System.out.println((words[i]));
-			}
-			
+					
 			for (int i = 0; i < words.length; i++) {
 				wordsToFind.add((words[i]));
 			}
@@ -127,7 +120,6 @@ public class WordSearch {
 				gridInputStringNoCommas = gridInputString.replaceAll(",",   "");
 				gridInputStringNoCommas = gridInputStringNoCommas.replaceAll(" ", "");
 			    gridData.add(gridInputStringNoCommas);
-				System.out.println(gridInputStringNoCommas);
 			}
 			fr.close();
 			
