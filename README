@@ -31,3 +31,19 @@ Still need to refactor & remove & cleanup some code, test with more input, and f
 document.  NEED EITHER TO DOCUMENT OR NOTE ABOUT INSTRUCTIONS SEEM TO HAVE X & Y MIXED UP
 For efficiency, remove found words so we don't keep searching for them.
 
+12/29/2017 - Added one more generated word search to the test suite.  Decided not to stop searching
+through the grid after a word is found for that word because there is nothing saying they cannot
+be found multiple times, although that would be unusual.
+
+Redoing all tests - noticed that the ones in GridTest no longer work because I added logic when formatting
+GridLines to also get and add the reverse Grid Line to the ArrayList of GridLines in the Grid object.
+Fixed the tests to account for this by adding the reverse of the lines to the expected strings.
+
+
+
+
+initial build was not done the way they taught us in WCCI because I didn't have WIFI access to get 
+the gradle build file.
+
+need a main method that takes a file name in
+also need instructions on how to run and what is what

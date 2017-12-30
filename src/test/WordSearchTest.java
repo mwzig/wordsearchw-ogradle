@@ -101,7 +101,7 @@ public class WordSearchTest {
 		wordsToFind.add("abc");
 		wordsToFind.add("hgf");
 
-		Grid letterGrid = new Grid("asdf");
+		Grid letterGrid = new Grid();
 		WordSearch wordSearch = new WordSearch(letterGrid, wordsToFind);
 		boolean bAllWordsFound = wordSearch.findWords();
 		assertFalse(bAllWordsFound);

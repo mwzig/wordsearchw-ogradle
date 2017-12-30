@@ -8,6 +8,19 @@ import java.util.ArrayList;
 
 import org.junit.platform.commons.util.StringUtils;
 
+//*********************************************************************************************//
+//*  The WordSearch class is a class that allows a user to supply an input file that contains *//
+//*  both words to find and a square grid of letters in which to find those words.            *//
+//*  The WordSearch class has a method findWords that then iterates through the list of words *//
+//*  to find, and searches the Grid to find them.                                             *//
+//*  For each word found, it prints out the word, and a list of the coordinates for the       *//
+//*  letters found in the grid.                                                               *//
+//*  The WordSearch class uses a Grid object to represent the grid of letters                 *//
+//*  and an ArrayList of Strings to represent the words to find, and also an ArrayList of     *//
+//*  FoundWord objects that represent the words found and their list of LocCoordinate objects.*//
+//*  (LocCoordinate objects contain an integer for the x and y coordinate of the letter in the*//
+//*  Grid.                                                                                    *//
+//*********************************************************************************************//
 public class WordSearch {
 
 	private String inputFileName;
@@ -15,12 +28,20 @@ public class WordSearch {
 	private ArrayList<String> wordsToFind;
 	private ArrayList<FoundWord> foundWords;
 
+	//*********************************************************************************************//
+	//*  This constructor is used as part of testing                                              *//
+	//*  It allows us to hard code a specific letter grid in our tests and pass it to this        *//
+	//*  constructor.                                                                             *//
+	//*********************************************************************************************//
 	public WordSearch(Grid letterGrid, ArrayList<String> wordsToFind) {
 		this.letterGrid = letterGrid;
 		this.wordsToFind = wordsToFind;
 		this.foundWords = new ArrayList<FoundWord>();
 	}
 	
+	//*********************************************************************************************//
+	//*  This constructor is the main constructor.                                                *//
+	//*********************************************************************************************//
 	public WordSearch(String inputFileName) {
 		this.inputFileName = inputFileName;
 		this.foundWords = new ArrayList<FoundWord>();
@@ -42,6 +63,9 @@ public class WordSearch {
 
 	}
 
+	//*********************************************************************************************//
+	//*  This constructor is the main constructor.                                                *//
+	//*********************************************************************************************//
 	public void findWord(String wordToFind) {
 
 		ArrayList<LocCoordinate> locCoordList = new ArrayList<LocCoordinate>();
@@ -66,13 +90,18 @@ public class WordSearch {
 		return foundWords;
 	}
 
+	//*********************************************************************************************//
+	//*  Read the input file.  It should be located in the /resources directory.                  *//
+	//*  The first line should contain a comma-separated list of words to find                    *//
+	//*  The next lines should contain rows of letters for th word search grid.                   *//
+	//*  The letters may be separated by either a space or a comma.                               *//
+	//*********************************************************************************************//
 	public void readInputFile() {
 		String basePath = new File("").getAbsolutePath();
 		String inputBasePath = basePath + "/resources";
 		System.out.println(basePath);
-		int rowNbr = 0;
-
-		// Now read in the input csv file. We will read the data on
+	
+		// Now read in the input file. We will read the data on
 		// each line into an arraylist and parse thru it later
 		String inputFileName = inputBasePath + this.inputFileName;
 		ArrayList<String> gridData = new ArrayList<String>();
@@ -108,15 +137,6 @@ public class WordSearch {
 		}
 
 	
-		for (String gridRow : gridData) {
-			//int firstCommaLoc = tagProductIdPrice.indexOf(',');
-			//int secondCommaLoc = tagProductIdPrice.indexOf(',', firstCommaLoc + 1);
-			//String tag = tagProductIdPrice.substring(0, firstCommaLoc);
-			//String productId = tagProductIdPrice.substring(firstCommaLoc + 1, secondCommaLoc);
-			//String price = tagProductIdPrice.substring(secondCommaLoc + 1);
-			//String urlWithProductId = urlPartA + productId + urlPartB;
-			//Thread.sleep(2000); // if you make too many calls/sec, the API errors for this license
-		}
 	}
 
 }

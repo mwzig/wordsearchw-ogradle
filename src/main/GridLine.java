@@ -1,6 +1,17 @@
 package main;
 import java.util.ArrayList;
 
+//*********************************************************************************************//
+//*  The GridLine class represents a line in the Grid which can be horizontal, vertical or    *//
+//*  diagonal (or the reverse horizontal, vertical or diagonal line).                         *//
+//*  It contains a String object named "lineString" that represents the String of all of the  *//
+//*  chars on a particular row, column, or diagonal line in the Grid.                         *//
+//*  It also contains an ArrayList of LocCoordinate objects for each of the letters on that   *//
+//*  line.                                                                                    *//
+//*  Additionally, it contains a method to get the reverse of itself, so for example, if a    *//
+//*  row contains the String "abcd", then the reverse of that is "dcba".  In that method, the *//
+//*  LocCoordinate objects are also reversed.                                                 *//                                                                                    *//
+//*********************************************************************************************//
 public class GridLine {
 
 	private String lineString;
