@@ -34,11 +34,10 @@ For efficiency, remove found words so we don't keep searching for them.
 12/29/2017 - Added one more generated word search to the test suite.  Decided not to stop searching
 through the grid after a word is found for that word because there is nothing saying they cannot
 be found multiple times, although that would be unusual.
-
-Redoing all tests - noticed that the ones in GridTest no longer work because I added logic when formatting
+Retesting all tests - noticed that the ones in GridTest no longer work because I added logic when formatting
 GridLines to also get and add the reverse Grid Line to the ArrayList of GridLines in the Grid object.
 Fixed the tests to account for this by adding the reverse of the lines to the expected strings.
-
+Removed System.out.printlns.  
 
 
 

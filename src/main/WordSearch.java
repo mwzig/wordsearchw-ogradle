@@ -47,6 +47,22 @@ public class WordSearch {
 		this.foundWords = new ArrayList<FoundWord>();
 		this.wordsToFind = new ArrayList<String>();
 	}
+	
+	//*********************************************************************************************//
+	//*  Main method - passed an argument that is the file name of a file                         *//
+	//*  that exists in the resources folder in this directory                                    *//
+	//*********************************************************************************************//
+	public static void main(String[] args) {
+	
+		WordSearch ws = new WordSearch(args[0]);
+		ws.readInputFile();
+		ws.findWords();
+		for (FoundWord foundWord: ws.getFoundWords()) {
+			System.out.println(foundWord.toString());
+		}
+		
+	}
+
 
 	// If all words found, return true
 	public boolean findWords() {
@@ -98,7 +114,7 @@ public class WordSearch {
 	//*********************************************************************************************//
 	public void readInputFile() {
 		String basePath = new File("").getAbsolutePath();
-		String inputBasePath = basePath + "/resources";
+		String inputBasePath = basePath + "/resources/";
 		
 		// Now read in the input file. We will read the data on
 		// each line into an arraylist and parse thru it later

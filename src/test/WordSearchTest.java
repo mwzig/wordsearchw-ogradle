@@ -245,7 +245,7 @@ public class WordSearchTest {
 				+ "SPOCK: (1,2),(2,3),(3,4),(4,5),(5,6)" + "SULU: (3,3),(2,2),(1,1),(0,0)"
 				+ "UHURA: (0,4),(1,3),(2,2),(3,1),(4,0)";
 
-		WordSearch wordSearch = new WordSearch("/PillarExampleWordSearch.txt");
+		WordSearch wordSearch = new WordSearch("PillarExampleWordSearch.txt");
 		wordSearch.readInputFile();
 		boolean bAllWordsFound = wordSearch.findWords();
 		String checkPrintFoundWords = "";
@@ -259,7 +259,7 @@ public class WordSearchTest {
 	@Test
 	public void TestJunkFoodWordSearchInInputFile() {
 
-		WordSearch wordSearch = new WordSearch("/JunkFoodWordSearch.txt");
+		WordSearch wordSearch = new WordSearch("JunkFoodWordSearch.txt");
 		wordSearch.readInputFile();
 		boolean bAllWordsFound = wordSearch.findWords();
 		for (FoundWord foundWord : wordSearch.getFoundWords()) {
@@ -272,7 +272,7 @@ public class WordSearchTest {
 	@Test
 	public void TestHealthyFoodWOrdSearchInInputFile() {
 
-		WordSearch wordSearch = new WordSearch("/HealthyFoodWordSearch.txt");
+		WordSearch wordSearch = new WordSearch("HealthyFoodWordSearch.txt");
 		wordSearch.readInputFile();
 		boolean bAllWordsFound = wordSearch.findWords();
 		for (FoundWord foundWord : wordSearch.getFoundWords()) {
