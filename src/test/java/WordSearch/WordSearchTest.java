@@ -1,18 +1,17 @@
-package test;
+package WordSearch;
 
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import main.FoundWord;
-import main.Grid;
-import main.GridLetter;
-import main.LocCoordinate;
-import main.WordSearch;
+import WordSearch.FoundWord;
+import WordSearch.Grid;
+import WordSearch.GridLetter;
+import WordSearch.LocCoordinate;
+import WordSearch.WordSearch;
 
 public class WordSearchTest {
 
