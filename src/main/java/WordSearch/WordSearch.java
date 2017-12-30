@@ -1,4 +1,4 @@
-package main;
+package WordSearch;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.junit.platform.commons.util.StringUtils;
+
+import WordSearch.GridLine;
 
 //*********************************************************************************************//
 //*  The WordSearch class is a class that allows a user to supply an input file that contains *//

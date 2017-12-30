@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import main.FoundWord;
+import WordSearch.FoundWord;
 
 class WordSearchControllerTest {
 

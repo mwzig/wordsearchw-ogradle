@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import main.FoundWord;
+import WordSearch.FoundWord;
 
 public class WordSearchV1Test {
 

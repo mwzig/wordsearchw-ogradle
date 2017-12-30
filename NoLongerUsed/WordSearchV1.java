@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
-import main.FoundWord;
-import main.LocCoordinate;
+import WordSearch.FoundWord;
+import WordSearch.LocCoordinate;
 
 public class WordSearchV1 {
 
